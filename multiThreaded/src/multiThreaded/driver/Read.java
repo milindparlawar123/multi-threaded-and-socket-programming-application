@@ -25,8 +25,6 @@ this.fileProcessor=fileProcessor;
 			
 		String numberStr= null;
 		try {
-			//System.out.println("dd "+this.fileProcessor.poll());
-			
 			while ((numberStr = this.fileProcessor.poll()) != null){
 				try {
 					
