@@ -34,7 +34,6 @@ public class DataSender implements Runnable {
 	public static void writeToFile(Vector list) {
 		System.out.println("in data sender " + list);
 		// TODO Auto-generated method stub
-
 	}
 
 }
