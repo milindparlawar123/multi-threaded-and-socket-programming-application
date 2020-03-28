@@ -17,7 +17,7 @@ public class Driver {
 
 		}
 		for (int i = 0; i < 1; i++) {
-			Runnable r = new DataThread(results);
+			Runnable r = new DataSender(results);
 			executorService.execute(r);
 
 		}

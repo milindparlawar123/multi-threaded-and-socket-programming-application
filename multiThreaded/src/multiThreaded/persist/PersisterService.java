@@ -6,6 +6,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import multiThreaded.driver.DataSender;
+
 public class PersisterService {
 	
 	public static ServerSocket serversocket;
@@ -31,22 +33,22 @@ public class PersisterService {
 		String hostname;
 		
 		try {
-			//create the serverSocket and bind it to port #
+			// create the serverSocket and bind it to port #
 			serversocket = new ServerSocket(port);
-			
+
 			hostname = InetAddress.getLocalHost().getCanonicalHostName();
 
 			System.out.println("Hostname is: " + hostname);
 			System.out.println("Port number is - " + port);
-			
-			Socket clientSocket = serversocket.accept();
-			
-			ClientClass acceptingServerReq = new ClientClass(clientSocket);
-			
-			Thread th = new Thread(acceptingServerReq);	
-			th.start();
-			
-			
+			while (true) {
+				Socket clientSocket = serversocket.accept();
+
+				DataSender acceptingServerReq = new DataSender(clientSocket);
+
+				Thread th = new Thread(acceptingServerReq);
+				th.start();
+			}
+
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

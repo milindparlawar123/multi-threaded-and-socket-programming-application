@@ -5,8 +5,9 @@ import java.util.Vector;
 public class Results {
 	private Vector list;
 	private int size;
+	
 
-	public Results(int size) {
+	public Results(int size, DataSender data) {
 		this.list = new Vector(size);
 		this.size = size;
 	}
@@ -26,7 +27,8 @@ public class Results {
 			wait();
 
 		// this.list.add(number);// write
-		System.out.println(this.list);
+		//System.out.println(this.list);
+		DataSender.writeToFile();
 
 		this.list.removeAllElements();
 		notifyAll();
