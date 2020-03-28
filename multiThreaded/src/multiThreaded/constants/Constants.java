@@ -1,9 +1,9 @@
-package multiThreaded.driver;
+package multiThreaded.constants;
 
 /**
- * @author Milind. 
+ *  
  * This class contains all constant which can be used across
- *         application
+ * the application
  */
 public class Constants {
 	public static final String AVG_NUMBER_WORDS_PER_SENTENCE = "AVG_NUMBER_WORDS_PER_SENTENCE";
