@@ -7,7 +7,7 @@ public class Results {
 	private int size;
 	private boolean isCompleted = false;
 
-	public Results(int size, DataSender data) {
+	public Results(int size) {
 		this.list = new Vector(size);
 		this.size = size;
 	}
@@ -25,7 +25,7 @@ public class Results {
 			notifyAll();
 			wait();
 			}
-		System.out.println("number " + number);
+		//System.out.println("number " + number);
 		this.list.add(number);
 		Thread.sleep(1);
 	}
@@ -36,8 +36,8 @@ public class Results {
 				wait();
 
 			// this.list.add(number);// write
-			System.out.println(this.list + " print");
-			DataSender.writeToFile();
+			//System.out.println(this.list + " print");
+			DataSender.writeToFile(this.list);
 			Thread.sleep(1);
 			this.list.removeAllElements();
 			notifyAll();
@@ -45,7 +45,8 @@ public class Results {
 
 		}
 		if (isCompleted) {
-			System.out.println(this.list + " print");
+			DataSender.writeToFile(this.list);
+			//System.out.println(this.list + " print");
 
 			this.list.removeAllElements();
 		}
