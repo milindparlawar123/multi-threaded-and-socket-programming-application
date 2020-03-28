@@ -1,6 +1,5 @@
 package multiThreaded.driver;
 
-import java.io.IOException;
 import java.net.Socket;
 
 public class DataSender implements Runnable{
@@ -22,9 +21,11 @@ public class DataSender implements Runnable{
 		}
 		
 	}
+	
 
-	static void writeToFile() {
+	public static void writeToFile() {
 		// TODO Auto-generated method stub
+		//write to file here
 		
 	}
 
