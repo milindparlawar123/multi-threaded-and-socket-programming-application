@@ -28,7 +28,7 @@ public final class FileProcessor {
 		line = reader.readLine();
 	}
 
-	public String poll() throws IOException {
+	public synchronized String poll() throws IOException {
 		if (null == line) return null;
 
 		String newValue = line.trim();

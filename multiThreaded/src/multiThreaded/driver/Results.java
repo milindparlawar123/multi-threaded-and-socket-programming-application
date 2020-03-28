@@ -5,34 +5,49 @@ import java.util.Vector;
 public class Results {
 	private Vector list;
 	private int size;
-	
+	private boolean isCompleted = false;
 
 	public Results(int size, DataSender data) {
 		this.list = new Vector(size);
 		this.size = size;
 	}
 
-	public synchronized void store(int number) throws InterruptedException {
-		notifyAll();
-		while (list.size() == size)
+	public synchronized void store(Integer number) throws InterruptedException {
+
+		if (number == null) {
+			System.out.println(" doneeee ");
+			isCompleted = true;
+			notifyAll();
+			return;
+		}
+		
+		while (list.size() == size) {
+			notifyAll();
 			wait();
-
+			}
+		System.out.println("number " + number);
 		this.list.add(number);
-
-
+		Thread.sleep(1);
 	}
 
 	public synchronized void write() throws InterruptedException {
-		while (list.size() != size)
-			wait();
+		while (isCompleted == false) {
+			while (list.size() != size && !isCompleted)
+				wait();
 
-		// this.list.add(number);// write
-		//System.out.println(this.list);
-		DataSender.writeToFile();
+			// this.list.add(number);// write
+			System.out.println(this.list + " print");
+			DataSender.writeToFile();
+			Thread.sleep(1);
+			this.list.removeAllElements();
+			notifyAll();
+			Thread.sleep(1);
 
-		this.list.removeAllElements();
-		notifyAll();
-		
+		}
+		if (isCompleted) {
+			System.out.println(this.list + " print");
+
+			this.list.removeAllElements();
+		}
 	}
-
 }
