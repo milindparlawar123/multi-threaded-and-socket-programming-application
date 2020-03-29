@@ -1,4 +1,4 @@
-package multiThreaded.driver;
+package multiThreaded.util;
 
 import java.io.IOException;
 import java.nio.file.InvalidPathException;

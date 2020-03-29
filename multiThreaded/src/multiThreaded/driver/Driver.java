@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import multiThreaded.util.FileProcessorObj;
+
 public class Driver {
 
 	public static void main(String args[]) {

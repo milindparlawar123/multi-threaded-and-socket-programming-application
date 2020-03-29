@@ -3,6 +3,8 @@ package multiThreaded.driver;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 
+import multiThreaded.util.FileProcessor;
+
 public class Read implements Runnable {
 
 	private String name;

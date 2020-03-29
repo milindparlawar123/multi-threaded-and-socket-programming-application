@@ -1,4 +1,4 @@
-package multiThreaded.driver;
+package multiThreaded.util;
 
 import java.io.FileNotFoundException;
 import java.io.BufferedReader;
