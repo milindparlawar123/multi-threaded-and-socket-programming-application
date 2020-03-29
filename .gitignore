@@ -1,0 +1,5 @@
+/bin/
+.DS_Store
+# Not tracking any hidden files except .gitignore file.
+.*
+!.gitignore
