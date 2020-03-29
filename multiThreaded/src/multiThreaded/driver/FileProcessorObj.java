@@ -9,7 +9,6 @@ public class FileProcessorObj {
 		 try {
 				this.fileProcessor = new FileProcessor("input.txt");
 			} catch (InvalidPathException | SecurityException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}

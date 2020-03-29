@@ -3,6 +3,8 @@ package multiThreaded.driver;
 import java.net.Socket;
 import java.util.Vector;
 
+import multiThreaded.persist.PersisterService;
+
 public class DataSender implements Runnable {
 
 	private Results results;
@@ -31,9 +33,12 @@ public class DataSender implements Runnable {
 
 	}
 
-	public static void writeToFile(Vector list) {
+	public static void writeToFile(Vector<Integer> list) {
 		System.out.println("in data sender " + list);
-		// TODO Auto-generated method stub
+		
+		//Sending the data to the server aka PersisterService
+		PersisterService.echoNumbers(list);
+		
 	}
 
 }

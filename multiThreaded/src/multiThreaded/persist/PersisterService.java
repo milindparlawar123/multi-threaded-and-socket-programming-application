@@ -1,10 +1,14 @@
 package multiThreaded.persist;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Vector;
 
 import multiThreaded.driver.DataSender;
 
@@ -65,6 +69,30 @@ public class PersisterService {
 			  } 
 		}
 		
+	}
+
+	public static void echoNumbers(Vector<Integer> list) {
+		System.out.println("gonna write numbers to file.");
+		
+		int sizeOfVector = list.size();
+		
+		try {
+			PrintWriter pw = new PrintWriter(new FileWriter("output.txt", true));
+			for (int i = 0; i < sizeOfVector; i++) {
+				System.out.println(list.elementAt(i));
+				pw.println(list.elementAt(i));
+				System.out.println("after pw");
+			}
+			pw.flush();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		/*
+		 * finally { pw.close(); }
+		 */
 	}
 
 }

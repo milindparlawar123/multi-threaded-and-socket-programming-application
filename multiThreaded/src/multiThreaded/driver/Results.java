@@ -3,12 +3,12 @@ package multiThreaded.driver;
 import java.util.Vector;
 
 public class Results {
-	private Vector list;
+	private Vector<Integer> list;
 	private int size;
 	private boolean isCompleted = false;
 
 	public Results(int size) {
-		this.list = new Vector(size);
+		this.list = new Vector<Integer>(size);
 		this.size = size;
 	}
 
