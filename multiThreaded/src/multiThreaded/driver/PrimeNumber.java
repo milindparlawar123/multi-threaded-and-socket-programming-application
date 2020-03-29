@@ -1,6 +1,8 @@
 package multiThreaded.driver;
 
-public class PrimeNumber {
+import multiThreaded.primeI.PrimeI;
+
+public class PrimeNumber implements PrimeI{
 
 	private static PrimeNumber primeNumber = new PrimeNumber();
 
