@@ -1,4 +1,4 @@
-<project name="wordPlay" default="compile_all" basedir="..">
+<project name="multiThreaded" default="compile_all" basedir="..">
 
   <property name="BUILD.compiler"       value="modern"/>
   <property name="src"                  value="src"/>
@@ -8,34 +8,44 @@
   <target name="all" depends="compile_all"/>
 
   <target name="compile_all"
-          depends="wordPlay"/>
+          depends="persisterService, primeDetector"/>
 
   <target name="clean">
        <delete dir="${BUILD}"/>
   </target>
 
   <!-- Prepare target directories -->
-  <target name="prepare">
-        <mkdir dir="${BUILD}"/>
-        <mkdir dir="${classes}"/>
-  </target>
+	  <target name="prepare">
+	        <mkdir dir="${BUILD}"/>
+	        <mkdir dir="${classes}"/>
+	  </target>
+	
+	<target name="prime-detector-jar">
+	        <mkdir dir="${BUILD}/jar"/>
+	        <jar destfile="${BUILD}/jar/primeDetector.jar" basedir="${BUILD}/classes">
+	            <manifest>
+	                <attribute name="Main-Class" value="multiThreaded.driver.PrimeDetector"/>
+	            </manifest>
+	        </jar>
+	    </target>
 
- <target name="jar">
-        <mkdir dir="${BUILD}/jar"/>
-        <jar destfile="${BUILD}/jar/wordPlay.jar" basedir="${BUILD}/classes">
-            <manifest>
-                <attribute name="Main-Class" value="wordPlay.driver.Driver"/>
-            </manifest>
-        </jar>
-    </target>
+	 <target name="persister-service-jar">
+	        <mkdir dir="${BUILD}/jar"/>
+	        <jar destfile="${BUILD}/jar/persisterService.jar" basedir="${BUILD}/classes">
+	            <manifest>
+	                <attribute name="Main-Class" value="multiThreaded.persist.PersisterService"/>
+	            </manifest>
+	        </jar>
+	    </target>
 
   <!-- ** means all subdirectories as well -->
   <!-- * means all files in the current directory -->
   <!-- for just java files use *.java -->
 
-  <target name="wordPlay" depends="prepare">
+  
+  <target name="primeDetector" depends="prepare">
     <javac includeantruntime="false" srcdir="${src}"
-	           includes="wordPlay/**"
+	           includes="multiThreaded/**"
            excludes="**/package.html"
            destdir="${classes}"
            classpath="${classes}"
@@ -43,13 +53,36 @@
            optimize="on"
            deprecation="off"/>
   </target>
+	
+    	<target name="persisterService" depends="prepare">
+    	    <javac includeantruntime="false" srcdir="${src}"
+    		           includes="multiThreaded/**"
+    	           excludes="**/package.html"
+    	           destdir="${classes}"
+    	           classpath="${classes}"
+    	           debug="on"
+    	           optimize="on"
+    	           deprecation="off"/>
+    	  </target>
 
-<target name="run" depends="jar">
-        <java jar="${BUILD}/jar/wordPlay.jar"  fork="true">
-	<arg value="${arg0}"/> <!-- input file -->
-	<arg value="${arg1}"/> <!-- output file -->
-        <arg value="${arg2}"/> <!-- metrics file -->
-        </java>	
-    </target>
+	<target name="run-prime-detector" depends="prime-detector-jar">
+	    <java jar="${BUILD}/jar/primeDetector.jar" fork="true">
+	        <!-- prime detector args -->
+	    	<arg value="${inputFile}"/>
+	    	<arg value="${numThreads}"/>
+	    	<arg value="${capacity}"/>
+	    	<arg value="${persisterServiceIp}"/>
+	    	<arg value="${persisterServicePort}"/>
+	    	<arg value="${debugValue}"/>
+	    </java>
+	</target>
+
+	<target name="run-persister-service" depends="persister-service-jar">
+	    <java jar="${BUILD}/jar/persisterService.jar" fork="true">
+	    	<!-- persister service args -->
+	    	<arg value="${port}"/>
+	    	<arg value="${outputFile}"/>
+	    </java>
+	</target>
 
 </project>

@@ -6,13 +6,14 @@ import java.util.concurrent.Executors;
 
 import multiThreaded.util.FileProcessorObj;
 
-public class Driver {
+public class PrimeDetector {
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
+		
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
 		Results results = new Results(5);
 		FileProcessorObj filePr = new FileProcessorObj();
-
+		
 		for (int i = 0; i < 3; i++) {
 			Runnable r = new Read("thread " + i, results, filePr.getProce());
 			executorService.execute(r);
@@ -23,7 +24,11 @@ public class Driver {
 			executorService.execute(r);
 
 		}
-
+		
+		System.out.println(args[0]);
+		System.out.println(args[1]);
+		System.out.println(args[3]);
+		
 		System.out.println("dddddff");
 		executorService.shutdown();
 		while (!executorService.isTerminated()) {
