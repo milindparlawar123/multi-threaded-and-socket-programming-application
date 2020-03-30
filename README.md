@@ -1,5 +1,5 @@
 # CSX42: Assignment 1
-## Name: Smriti Janaswamy and Milind 
+## Name: Smriti Janaswamy and Milind Keshav Parlawar
 -----------------------------------------------------------------------
 
 #### Important Note : 
@@ -102,6 +102,8 @@ https://github.com/Dhirajdgandhi/Producer-Consumer-problem-using-Socket-Programm
 https://stackoverflow.com/questions/15156888/client-server-assignment-modeled-using-java-threads-producer-consumer-queues  
 https://codereview.stackexchange.com/questions/180061/socket-server-with-consumer-producer-design-to-handle-concurrent-connections  
 https://stackoverflow.com/questions/2888725/multiple-depends-in-ant-task  
+https://www.geeksforgeeks.org/producer-consumer-solution-using-threads-java/
+http://tutorials.jenkov.com/java-util-concurrent/executorservice.html
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
@@ -115,7 +117,7 @@ determine the action that needs to be taken. "
 
 --
 Smriti Janaswamy
-
+Milind Keshav Parlawar
 
 
 Date: 30 Mar 2020.
