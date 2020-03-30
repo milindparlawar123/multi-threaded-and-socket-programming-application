@@ -30,7 +30,10 @@ public class DataSender implements Runnable {
 			// writeToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+
 		}
+		
 	}
 
 	public static void writeToFile(Vector<Integer> list) {

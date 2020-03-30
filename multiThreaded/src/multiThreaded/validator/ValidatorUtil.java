@@ -12,6 +12,8 @@ public final class ValidatorUtil {
 				v.run();
 			} catch (Exception e) {
 				throw new Exception(baseErrMsg.concat(": " + e.getMessage()), e);
+			} finally {
+
 			}
 		}
 

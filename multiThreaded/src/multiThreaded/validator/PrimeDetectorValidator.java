@@ -59,6 +59,8 @@ public class PrimeDetectorValidator {
 							}
 						} catch (NumberFormatException e) {
 							throw new Exception(Constants.ERROR_NUM_THREADS);
+						} finally {
+
 						}
 						try {
 							args2 = Integer.parseInt(d.getArgs()[2]);
@@ -67,6 +69,8 @@ public class PrimeDetectorValidator {
 							}
 						} catch (NumberFormatException e) {
 							throw new Exception(Constants.ERROR_CAPACITY);
+						} finally {
+
 						}
 						try {
 							args4 = Integer.parseInt(d.getArgs()[4]);
@@ -75,6 +79,8 @@ public class PrimeDetectorValidator {
 							}
 						} catch (NumberFormatException e) {
 							throw new Exception(Constants.ERROR_PERSISTER_SERVICE_PORT);
+						} finally {
+
 						}
 						try {
 							args5 = Integer.parseInt(d.getArgs()[5]);
@@ -83,6 +89,8 @@ public class PrimeDetectorValidator {
 							}
 						} catch (NumberFormatException e) {
 							throw new Exception(Constants.ERROR_DEBUG);
+						} finally {
+
 						}
 
 					}

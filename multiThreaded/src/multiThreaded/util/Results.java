@@ -37,8 +37,6 @@ public class Results {
 			while (list.size() != size && !isCompleted)
 				wait();
 
-			// this.list.add(number);// write
-			// System.out.println(this.list + " print");
 			DataSender.writeToFile(this.list);
 			Thread.sleep(1);
 			this.list.removeAllElements();
@@ -48,8 +46,6 @@ public class Results {
 		}
 		if (isCompleted) {
 			DataSender.writeToFile(this.list);
-			// System.out.println(this.list + " print");
-
 			this.list.removeAllElements();
 		}
 	}

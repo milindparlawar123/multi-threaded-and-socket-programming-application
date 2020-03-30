@@ -13,6 +13,8 @@ import java.nio.file.InvalidPathException;
 
 import java.util.List;
 
+import javax.annotation.processing.FilerException;
+
 public final class FileProcessor {
 	private BufferedReader reader;
 	private String line;
@@ -26,6 +28,10 @@ public final class FileProcessor {
 
 		reader = new BufferedReader(new FileReader(new File(inputFilePath)));
 		line = reader.readLine();
+		if(line == null) {
+			System.out.println("file is empty");
+			System.exit(0);
+		}
 	}
 
 	public synchronized String poll() throws IOException {
@@ -43,6 +49,8 @@ public final class FileProcessor {
 			line = null;
 		} catch (IOException e) {
 			throw new IOException("failed to close file", e);
+		} finally {
+
 		}
 	}
 }

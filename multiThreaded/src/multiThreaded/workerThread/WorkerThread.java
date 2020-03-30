@@ -43,7 +43,11 @@ public class WorkerThread implements Runnable {
 						}
 					} catch (NumberFormatException | InterruptedException e) {
 						// TODO Auto-generated catch block
+						System.out.println("Line in the input file is not an integer");
 						e.printStackTrace();
+						System.exit(0);
+					} finally {
+
 					}
 
 				}
@@ -56,10 +60,14 @@ public class WorkerThread implements Runnable {
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				} finally {
+
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+
 			}
 		}
 

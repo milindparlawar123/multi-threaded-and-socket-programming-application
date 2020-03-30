@@ -47,6 +47,8 @@ public class PersistValidaor {
 							}
 						} catch (NumberFormatException e) {
 							throw new Exception(Constants.ERROR_PERSISTER_SERVICE_PORT);
+						} finally {
+
 						}
 
 						String args01 = (d.getArgs()[1]);

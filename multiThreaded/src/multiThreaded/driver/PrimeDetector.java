@@ -27,12 +27,13 @@ public class PrimeDetector {
 		ExecutorService executorService = Executors.newFixedThreadPool(4);
 		Results results = new Results(5);
 		FileProcessor filePr = null;
-		;
 		try {
 			filePr = new FileProcessor("input.txt");
 		} catch (InvalidPathException | SecurityException | IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		} finally {
+
 		}
 
 		for (int i = 0; i < 1; i++) {
@@ -56,5 +57,8 @@ public class PrimeDetector {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		 finally {
+
+			}
 	}
 }
