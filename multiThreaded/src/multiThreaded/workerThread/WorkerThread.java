@@ -11,6 +11,7 @@ public class WorkerThread implements Runnable {
 	private String name;
 	private Results results;
 	private FileProcessor fileProcessor;
+	private static volatile int count=0;
 	public WorkerThread(String name, Results results, FileProcessor fileProcessor) {
 		super();
 		this.name = name;
@@ -28,6 +29,8 @@ this.fileProcessor=fileProcessor;
 			
 		 String numberStr= null;
 		try {
+			count++;
+			//System.out.println("count start"+ count);
 			while ((numberStr = this.fileProcessor.poll()) != null){
 				try {
 					
@@ -44,8 +47,10 @@ this.fileProcessor=fileProcessor;
 				}
 				
 			}
+			count--;
+			//System.out.println("count end"+ count);
 			Integer temp=null;
-			try {
+			try {if(count==0)
 				this.results.store(temp);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

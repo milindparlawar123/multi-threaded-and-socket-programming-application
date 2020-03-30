@@ -20,7 +20,7 @@ public class Results {
 			System.out.println(" doneeee ");
 			isCompleted = true;
 			notifyAll();
-			return;
+			
 		}
 		
 		while (list.size() == size) {
