@@ -10,13 +10,22 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Vector;
 
-import multiThreaded.driver.DataSender;
+import multiThreaded.DataSender.DataSender;
 
 public class PersisterService {
 	
 	public static ServerSocket serversocket;
 	
 	public static void main(String[] args) {
+		
+		try {
+			//new PersistValidaor(args.length, args);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		} finally {
+
+		}
 		
 		int port = Integer.parseInt(args[0]);
 		System.out.println("port = " + port);

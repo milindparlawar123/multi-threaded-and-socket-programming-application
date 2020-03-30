@@ -1,16 +1,17 @@
-package multiThreaded.driver;
+package multiThreaded.workerThread;
 
 import java.io.IOException;
-import java.nio.file.InvalidPathException;
 
+import multiThreaded.primeNumber.PrimeNumber;
 import multiThreaded.util.FileProcessor;
+import multiThreaded.util.Results;
 
-public class Read implements Runnable {
+public class WorkerThread implements Runnable {
 
 	private String name;
 	private Results results;
 	private FileProcessor fileProcessor;
-	public Read(String name, Results results, FileProcessor fileProcessor) {
+	public WorkerThread(String name, Results results, FileProcessor fileProcessor) {
 		super();
 		this.name = name;
 		this.results=results;

@@ -1,6 +1,6 @@
-package multiThreaded.driver;
+package multiThreaded.primeNumber;
 
-import multiThreaded.primeI.PrimeI;
+import multiThreaded.primeNumber.PrimeI;
 
 public class PrimeNumber implements PrimeI{
 

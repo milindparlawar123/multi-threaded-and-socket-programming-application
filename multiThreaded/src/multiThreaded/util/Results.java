@@ -1,6 +1,8 @@
-package multiThreaded.driver;
+package multiThreaded.util;
 
 import java.util.Vector;
+
+import multiThreaded.DataSender.DataSender;
 
 public class Results {
 	private Vector<Integer> list;
