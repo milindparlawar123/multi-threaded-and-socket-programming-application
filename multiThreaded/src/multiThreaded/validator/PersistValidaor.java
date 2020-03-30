@@ -19,8 +19,8 @@ public class PersistValidaor {
 			return new Validator() {
 				@Override
 				public void run() throws Exception {
-					if (d.getArgsLength() != 6) {
-						throw new Exception(Constants.ERROR_INVALID_ARGUMENTS);
+					if (d.getArgsLength() != 2) {
+						throw new Exception(Constants.ERROR_ALL_PERSI_ARG_FILES_REQUIRED);
 					}
 				}
 			};
@@ -36,17 +36,22 @@ public class PersistValidaor {
 				@Override
 				public void run() throws Exception {
 					if ((d.getArgs()[0].equals(Constants.ARG_00)) || (d.getArgs()[1].equals(Constants.ARG_01))) {
-						throw new Exception(Constants.ERROR_ALL_ARG_FILES_REQUIRED);
+						throw new Exception(Constants.ERROR_ALL_PERSI_ARG_FILES_REQUIRED);
 					} else {
 						Integer args00;
-						//Integer args01;
+						// Integer args01;
 						try {
 							args00 = Integer.parseInt(d.getArgs()[0]);
-							if (!(args00 > 32768 && args00 < 50000)) {
+							if (args00 < 32768 || args00 > 50000) {
 								throw new Exception(Constants.ERROR_PERSISTER_SERVICE_PORT_RANGE);
 							}
 						} catch (NumberFormatException e) {
 							throw new Exception(Constants.ERROR_PERSISTER_SERVICE_PORT);
+						}
+
+						String args01 = (d.getArgs()[1]);
+						if (args01 == null || args01.trim().length() == 0) {
+							throw new Exception(Constants.ERROR_INVALID_OUTPUT_FILE);
 						}
 
 					}

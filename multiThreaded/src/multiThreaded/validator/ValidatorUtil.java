@@ -1,6 +1,5 @@
 package multiThreaded.validator;
 
-
 /**
  * @author Milind
  *

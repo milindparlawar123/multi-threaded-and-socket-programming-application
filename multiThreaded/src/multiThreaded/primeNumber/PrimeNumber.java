@@ -2,7 +2,7 @@ package multiThreaded.primeNumber;
 
 import multiThreaded.primeNumber.PrimeI;
 
-public class PrimeNumber implements PrimeI{
+public class PrimeNumber implements PrimeI {
 
 	private static PrimeNumber primeNumber = new PrimeNumber();
 

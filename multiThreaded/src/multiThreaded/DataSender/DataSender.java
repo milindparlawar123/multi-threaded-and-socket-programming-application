@@ -35,10 +35,10 @@ public class DataSender implements Runnable {
 
 	public static void writeToFile(Vector<Integer> list) {
 		System.out.println("in data sender " + list);
-		
-		//Sending the data to the server aka PersisterService
+
+		// Sending the data to the server aka PersisterService
 		PersisterService.echoNumbers(list);
-		
+
 	}
 
 }

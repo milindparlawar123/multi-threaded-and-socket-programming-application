@@ -41,15 +41,20 @@ public class PrimeDetectorValidator {
 					if ((d.getArgs()[0].equals(Constants.ARG_0)) || (d.getArgs()[1].equals(Constants.ARG_1))
 							|| (d.getArgs()[2].equals(Constants.ARG_2)) || (d.getArgs()[3].equals(Constants.ARG_3))
 							|| (d.getArgs()[4].equals(Constants.ARG_4)) || (d.getArgs()[5].equals(Constants.ARG_5))) {
-						throw new Exception(Constants.ERROR_ALL_ARG_FILES_REQUIRED);
+						throw new Exception(Constants.ERROR_ALL_PRIME_ARG_FILES_REQUIRED);
 					} else {
 						Integer args1;
 						Integer args2;
 						Integer args4;
 						Integer args5;
+						String args0 = (d.getArgs()[0]);
+						if (args0 == null || args0.trim().length() == 0) {
+							throw new Exception(Constants.ERROR_INVALID_INPUT_FILE);
+						}
+
 						try {
 							args1 = Integer.parseInt(d.getArgs()[1]);
-							if (!(args1 > 0 && args1 < 6)) {
+							if (args1 < 1 || args1 > 5) {
 								throw new Exception(Constants.ERROR_NUM_THREADS_SIZE);
 							}
 						} catch (NumberFormatException e) {
@@ -65,7 +70,7 @@ public class PrimeDetectorValidator {
 						}
 						try {
 							args4 = Integer.parseInt(d.getArgs()[4]);
-							if (args4 > 32768 && args4 < 50000) {
+							if (args4 < 32768 || args4 > 50000) {
 								throw new Exception(Constants.ERROR_PERSISTER_SERVICE_PORT_RANGE);
 							}
 						} catch (NumberFormatException e) {
@@ -73,7 +78,7 @@ public class PrimeDetectorValidator {
 						}
 						try {
 							args5 = Integer.parseInt(d.getArgs()[5]);
-							if (args5 < 1) {
+							if (args5 < 1 || args5 > 4) {
 								throw new Exception(Constants.ERROR_DEBUG_VALUE);
 							}
 						} catch (NumberFormatException e) {

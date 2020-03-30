@@ -20,14 +20,14 @@ public class Results {
 			System.out.println(" doneeee ");
 			isCompleted = true;
 			notifyAll();
-			
+
 		}
-		
+
 		while (list.size() == size) {
 			notifyAll();
 			wait();
-			}
-		//System.out.println("number " + number);
+		}
+		// System.out.println("number " + number);
 		this.list.add(number);
 		Thread.sleep(1);
 	}
@@ -38,7 +38,7 @@ public class Results {
 				wait();
 
 			// this.list.add(number);// write
-			//System.out.println(this.list + " print");
+			// System.out.println(this.list + " print");
 			DataSender.writeToFile(this.list);
 			Thread.sleep(1);
 			this.list.removeAllElements();
@@ -48,7 +48,7 @@ public class Results {
 		}
 		if (isCompleted) {
 			DataSender.writeToFile(this.list);
-			//System.out.println(this.list + " print");
+			// System.out.println(this.list + " print");
 
 			this.list.removeAllElements();
 		}
