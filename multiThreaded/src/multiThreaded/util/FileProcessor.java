@@ -15,6 +15,10 @@ import java.util.List;
 
 import javax.annotation.processing.FilerException;
 
+/**
+ * @author Milind and Smriti 
+ *below class is to read data from input file
+ */
 public final class FileProcessor {
 	private BufferedReader reader;
 	private String line;
@@ -34,6 +38,11 @@ public final class FileProcessor {
 		}
 	}
 
+	/**
+	 * @return it will return next line from input file
+	 * @throws IOException
+	 * method is synchronized, at once only one thread can read data
+	 */
 	public synchronized String poll() throws IOException {
 		if (null == line)
 			return null;
@@ -43,6 +52,10 @@ public final class FileProcessor {
 		return newValue;
 	}
 
+	/**
+	 * @throws IOException
+	 * below method is to close the file
+	 */
 	public void close() throws IOException {
 		try {
 			reader.close();

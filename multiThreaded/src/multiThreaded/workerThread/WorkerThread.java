@@ -2,13 +2,15 @@ package multiThreaded.workerThread;
 
 import java.io.IOException;
 
+import multiThreaded.constants.Constants;
 import multiThreaded.primeNumber.PrimeNumber;
 import multiThreaded.util.FileProcessor;
 import multiThreaded.util.Results;
 /**
  * @author Milind 
  * @author Smriti
- *
+ *below class will work as producer to add prime numbers to 
+ *data structure which is present in result class  
  */
 public class WorkerThread implements Runnable {
 
@@ -16,7 +18,7 @@ public class WorkerThread implements Runnable {
 	private FileProcessor fileProcessor;
 	private static volatile int count = 0;
 
-	public WorkerThread(String name, Results results, FileProcessor fileProcessor) {
+	public WorkerThread(Results results, FileProcessor fileProcessor) {
 		super();
 		this.results = results;
 
@@ -38,7 +40,7 @@ public class WorkerThread implements Runnable {
 							this.results.store(Integer.parseInt(numberStr));
 						}
 					} catch (NumberFormatException | InterruptedException e) {
-						System.out.println("Line in the input file is not an integer");
+						System.out.println(Constants.ERROR_INVALID_NUMBER);
 						e.printStackTrace();
 						System.exit(0);
 					} finally {

@@ -36,6 +36,7 @@ public class DataSender implements Runnable {
 		} catch (Exception e) {
 			System.out.println(e.getMessage() + "\n");
 			e.printStackTrace();
+			System.exit(0);
 		} finally {
 
 		}	

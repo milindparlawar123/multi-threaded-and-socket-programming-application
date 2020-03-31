@@ -10,6 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import multiThreaded.constants.Constants;
 import multiThreaded.validator.PersistValidator;
 
 /**
@@ -35,7 +36,7 @@ public class PersisterService {
 
 		int port = Integer.parseInt(args[0]);
 
-		System.out.println("Server started.\nListening for connections on port : " + port);
+		System.out.println(Constants.SERVER_LISTENING + port);
 
 		String hostname;
 		
@@ -47,34 +48,38 @@ public class PersisterService {
 
 			hostname = InetAddress.getLocalHost().getCanonicalHostName();
 
-			System.out.println("Hostname is: " + hostname);
-			System.out.println("Port number is: " + port + "\n");
+			System.out.println(Constants.HOSTNAME + hostname);
+			System.out.println(Constants.PORTNAME + port + "\n");
 			while (true) {
 
 				Socket clientSocket = serversocket.accept();
 				InputStreamReader in = new InputStreamReader(clientSocket.getInputStream());
 				BufferedReader bf = new BufferedReader(in);
 
-				pw = new PrintWriter(new FileWriter("output.txt"));
+				pw = new PrintWriter(new FileWriter(args[1]));
 				
 				String str = null;
 
 				while ((str = bf.readLine()) != null) {
-					System.out.println("str= " + str);
+
+					if(str.equals(Constants.STOP)){
+						try {
+							pw.close();
+							serversocket.close();
+						} catch (IOException e) {
+							System.out.println(Constants.ERROR_CLOSING_SOCKET + e.getMessage());
+						}
+						System.exit(0);
+					}
 					pw.println(str);
 					pw.flush();
 				}
-				
-				// DataSender acceptingServerReq = new DataSender(clientSocket);
-
-				// Thread th = new Thread(acceptingServerReq);
-				// th.start();
 			}
 
 		} catch (UnknownHostException e) {
-			System.out.println("Unknown Host Exception: \n " + e.getMessage());
+			System.out.println(Constants.ERROR_UNKNOWN_HOST + e.getMessage());
 		} catch (IOException e) {
-			System.out.println("Error connecting to the server! Please try again!\n" + e.getMessage());
+			System.out.println(Constants.ERROR_CONNECTING_SERVER + e.getMessage());
 		}
 
 		finally {
@@ -82,7 +87,7 @@ public class PersisterService {
 				pw.close();
 				serversocket.close();
 			} catch (IOException e) {
-				System.out.println("Error closing server socket!\n" + e.getMessage());
+				System.out.println(Constants.ERROR_CLOSING_SOCKET  + e.getMessage());
 			}
 		}
 
