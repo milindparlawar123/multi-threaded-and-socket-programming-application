@@ -1,0 +1,6 @@
+/bin/
+.DS_Store
+**/BUILD/
+# Not tracking any hidden files except .gitignore file.
+.*
+!.gitignore

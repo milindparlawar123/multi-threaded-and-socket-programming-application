@@ -1,0 +1,88 @@
+<project name="multiThreaded" default="compile_all" basedir="..">
+
+  <property name="BUILD.compiler"       value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="src/BUILD"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+
+  <target name="all" depends="compile_all"/>
+
+  <target name="compile_all"
+          depends="persisterService, primeDetector"/>
+
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+  </target>
+
+  <!-- Prepare target directories -->
+	  <target name="prepare">
+	        <mkdir dir="${BUILD}"/>
+	        <mkdir dir="${classes}"/>
+	  </target>
+	
+	<target name="prime-detector-jar">
+	        <mkdir dir="${BUILD}/jar"/>
+	        <jar destfile="${BUILD}/jar/primeDetector.jar" basedir="${BUILD}/classes">
+	            <manifest>
+	                <attribute name="Main-Class" value="multiThreaded.driver.PrimeDetector"/>
+	            </manifest>
+	        </jar>
+	    </target>
+
+	 <target name="persister-service-jar">
+	        <mkdir dir="${BUILD}/jar"/>
+	        <jar destfile="${BUILD}/jar/persisterService.jar" basedir="${BUILD}/classes">
+	            <manifest>
+	                <attribute name="Main-Class" value="multiThreaded.persist.PersisterService"/>
+	            </manifest>
+	        </jar>
+	    </target>
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  
+  <target name="primeDetector" depends="prepare">
+    <javac includeantruntime="false" srcdir="${src}"
+	           includes="multiThreaded/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+	
+    	<target name="persisterService" depends="prepare">
+    	    <javac includeantruntime="false" srcdir="${src}"
+    		           includes="multiThreaded/**"
+    	           excludes="**/package.html"
+    	           destdir="${classes}"
+    	           classpath="${classes}"
+    	           debug="on"
+    	           optimize="on"
+    	           deprecation="off"/>
+    	  </target>
+
+	<target name="run-prime-detector" depends="prime-detector-jar">
+	    <java jar="${BUILD}/jar/primeDetector.jar" fork="true">
+	        <!-- prime detector args -->
+	    	<arg value="${inputFile}"/>
+	    	<arg value="${numThreads}"/>
+	    	<arg value="${capacity}"/>
+	    	<arg value="${persisterServiceIp}"/>
+	    	<arg value="${persisterServicePort}"/>
+	    	<arg value="${debugValue}"/>
+	    </java>
+	</target>
+
+	<target name="run-persister-service" depends="persister-service-jar">
+	    <java jar="${BUILD}/jar/persisterService.jar" fork="true">
+	    	<!-- persister service args -->
+	    	<arg value="${port}"/>
+	    	<arg value="${outputFile}"/>
+	    </java>
+	</target>
+
+</project>
