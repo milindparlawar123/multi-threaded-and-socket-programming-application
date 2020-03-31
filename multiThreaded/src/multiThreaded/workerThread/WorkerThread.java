@@ -5,7 +5,11 @@ import java.io.IOException;
 import multiThreaded.primeNumber.PrimeNumber;
 import multiThreaded.util.FileProcessor;
 import multiThreaded.util.Results;
-
+/**
+ * @author Milind 
+ * @author Smriti
+ *
+ */
 public class WorkerThread implements Runnable {
 
 	private Results results;

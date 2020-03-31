@@ -13,6 +13,12 @@ import multiThreaded.util.Results;
 import multiThreaded.validator.PrimeDetectorValidator;
 import multiThreaded.workerThread.WorkerThread;
 
+/**
+ * @author Milind 
+ * @author Smriti
+ *
+ * 
+ */
 public class PrimeDetector {
 
 	public static void main(String[] args) {
@@ -38,6 +44,7 @@ public class PrimeDetector {
 		} catch (NumberFormatException e2) {
 			e2.printStackTrace();
 		} catch (UnknownHostException e2) {
+			System.out.println(e2.getMessage());
 			e2.printStackTrace();
 		} catch (IOException e2) {
 			e2.printStackTrace();

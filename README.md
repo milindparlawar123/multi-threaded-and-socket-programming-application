@@ -1,12 +1,14 @@
 # CSX42: Assignment 1
 ## Name: Smriti Janaswamy and Milind Keshav Parlawar
+
+#### Repository Link - https://github.com/csx42/csx42-spring-2020-assign3-smriti/
 -----------------------------------------------------------------------
 
 #### Important Note : 
 * All the code had initially been checked into the develop branch. 
 * See a list here with the dates for the commits - https://github.com/csx42/csx42-spring-2020-assign3-smriti/commits/develop
 * Guidelines for the assignment have been followed and we have not checked in more than 80% of the code 72 hours before the deadline. 
-* I will eventually be raising a PR against master branch and merge it for viewing.
+* We will eventually be raising a PR against master branch and merge it for viewing.
 * The reason for doing this is to help ensure I have adhered to industry standards (from my experience this is a design aspect) of always checking in code to a custom/develop branch before merging into the main branch that holds ALL the code.
 * Both developers have done equal parts of the assignment. The commits may not reflect this because we have tried pair programming for some parts of the assignment.
 
@@ -32,17 +34,16 @@ compiled your code.
 Description: Compiles your code and generates .class files inside the BUILD folder.
 
 -----------------------------------------------------------------------
-## Instruction to run:
-
+## Instruction to run:  
+** Please Enter commands as given below without change **
 ## Run PersisterService first:
 
 ###Command: ant -buildfile multiThreaded/src/build.xml run-persister-service -Dport=9090 -DoutputFile=output.txt
 
 ** Note: **
 * Arguments accept the absolute path of the files.
-* The current input.txt file has some content that I have used when writing code.
-* Please feel free to replace the text in this to test with.
 * The output file is in the same location as the input.txt file.
+* The port number you enter must be in between 32768 and 50000.
 
 ## Run PrimeDetector next:
 
@@ -50,6 +51,9 @@ Description: Compiles your code and generates .class files inside the BUILD fold
 
 ** Note **
 * The input file name is input.txt
+* The current input.txt file has some content that I have used when writing code.
+* Please feel free to replace the text in this to test with.
+* The output file name is output.txt and is in the same location as the input file.
 * numThreads can be a number between 1 AND 5
 * capacity is a number that must not be <= 0
 * persisterServiceIp is the IP address on which the server is running. This information is printed to the console - pick it up from there.
@@ -68,16 +72,28 @@ Additional Info -  Use 2 terminal windows to run. One window will run the persis
 ## Description:
 
 **CLASSES**
-
+* PrimeDetector
+* PersisterService
+* DataSender
+* WorkerThread
+* PrimeNumber
+* FileProcessor
+* Results
+* PersistValidator
+* PrimeDetectorValidator
+* ValidatorUtil
+* Constants
 
 **INTERFACES**
-
+* PrimeI
+* Validator
 
 **OUTPUT FILES**
+* output.txt
 
 
 **DATA STRUCTURES USED**
-
+* Vector - this is the shared data structure we have used for the Producer Consumer.
 
 **DOCUMENTATION**  
 * I have provided documentation in Javadoc style as much as possible for classes and methods.
@@ -102,8 +118,8 @@ https://github.com/Dhirajdgandhi/Producer-Consumer-problem-using-Socket-Programm
 https://stackoverflow.com/questions/15156888/client-server-assignment-modeled-using-java-threads-producer-consumer-queues  
 https://codereview.stackexchange.com/questions/180061/socket-server-with-consumer-producer-design-to-handle-concurrent-connections  
 https://stackoverflow.com/questions/2888725/multiple-depends-in-ant-task  
-https://www.geeksforgeeks.org/producer-consumer-solution-using-threads-java/
-http://tutorials.jenkov.com/java-util-concurrent/executorservice.html
+https://www.geeksforgeeks.org/producer-consumer-solution-using-threads-java/  
+http://tutorials.jenkov.com/java-util-concurrent/executorservice.html  
 
 -----------------------------------------------------------------------
 ### Academic Honesty statement:
@@ -115,8 +131,8 @@ I am involved in plagiarism or cheating an official form will be
 submitted to the Academic Honesty Committee of the Watson School to
 determine the action that needs to be taken. "
 
---
-Smriti Janaswamy
+--  
+Smriti Janaswamy  
 Milind Keshav Parlawar
 
 
@@ -125,6 +141,6 @@ Date: 30 Mar 2020.
 -----------------------------------------------------------------------
 ### SLACK DAYS USED :
 
-We have used 1 slack day for this assignment.
+We have used 2 slack days for this assignment.
 
 -----------------------------------------------------------------------

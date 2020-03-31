@@ -1,8 +1,10 @@
 package multiThreaded.constants;
 
 /**
- * @author Milind. This class contains all constant which can be used across
- *         application
+ * @author Milind 
+ * @author Smriti
+ * This class contains all constant which can be used across 
+ * 	   application
  */
 public class Constants {
 

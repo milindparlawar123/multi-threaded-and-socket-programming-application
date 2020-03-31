@@ -2,7 +2,12 @@ package multiThreaded.DataSender;
 
 import java.net.Socket;
 import multiThreaded.util.Results;
-
+/**
+ * @author Milind 
+ * @author Smriti
+ *
+ * Class DataSender is the Consumer which is also the client.
+ */
 public class DataSender implements Runnable {
 
 	private Results results;
@@ -29,6 +34,7 @@ public class DataSender implements Runnable {
 		try {
 			this.results.write();
 		} catch (Exception e) {
+			System.out.println(e.getMessage() + "\n");
 			e.printStackTrace();
 		} finally {
 

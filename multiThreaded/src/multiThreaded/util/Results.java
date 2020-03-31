@@ -5,6 +5,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Vector;
 
+/**
+ * @author Milind 
+ * @author Smriti
+ *
+ * 
+ */
 public class Results {
 	private Vector<Integer> list;
 	

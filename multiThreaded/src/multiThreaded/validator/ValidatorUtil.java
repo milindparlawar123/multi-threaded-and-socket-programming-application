@@ -1,8 +1,8 @@
 package multiThreaded.validator;
 
 /**
- * @author Milind
- *
+ * @author Milind 
+ * @author Smriti
  */
 public final class ValidatorUtil {
 

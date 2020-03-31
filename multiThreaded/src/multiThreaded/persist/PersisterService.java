@@ -12,6 +12,14 @@ import java.net.UnknownHostException;
 
 import multiThreaded.validator.PersistValidator;
 
+/**
+ * @author Milind 
+ * @author Smriti
+ *
+ * PersisterService is the server which is constantly listening for data
+ * from the client DataSender on the port number specified.
+ * 
+ */
 public class PersisterService {
 
 	public static ServerSocket serversocket;
@@ -64,7 +72,7 @@ public class PersisterService {
 			}
 
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+			System.out.println("Unknown Host Exception: \n " + e.getMessage());
 		} catch (IOException e) {
 			System.out.println("Error connecting to the server! Please try again!\n" + e.getMessage());
 		}
