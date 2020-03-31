@@ -1,19 +1,33 @@
 package multiThreaded.util;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Vector;
-
-import multiThreaded.DataSender.DataSender;
 
 public class Results {
 	private Vector<Integer> list;
-	private int size;
-	private boolean isCompleted = false;
-
-	public Results(int size) {
-		this.list = new Vector<Integer>(size);
-		this.size = size;
+	
+	public Vector<Integer> getList() {
+		return list;
 	}
 
+	public void setList(Vector<Integer> list) {
+		this.list = list;
+	}
+
+	private int size;
+	private boolean isCompleted = false;
+	
+	Socket clientSocket;
+
+	public Results(int size, Socket s) {
+		this.list = new Vector<Integer>(size);
+		this.size = size;
+		
+		clientSocket = s;
+	}
+	
 	public synchronized void store(Integer number) throws InterruptedException {
 
 		if (number == null) {
@@ -27,17 +41,26 @@ public class Results {
 			notifyAll();
 			wait();
 		}
-		// System.out.println("number " + number);
 		this.list.add(number);
 		Thread.sleep(1);
 	}
 
-	public synchronized void write() throws InterruptedException {
+	public synchronized void write() throws InterruptedException, IOException {
+		PrintWriter pw = new PrintWriter(clientSocket.getOutputStream());
+		
+		
 		while (isCompleted == false) {
 			while (list.size() != size && !isCompleted)
 				wait();
-
-			DataSender.writeToFile(this.list);
+			
+			//write to file as well
+			int sizeOfVector = list.size();
+			
+			for (int i = 0; i < sizeOfVector; i++) {
+				pw.println(list.elementAt(i));
+			}
+			pw.flush();
+			
 			Thread.sleep(1);
 			this.list.removeAllElements();
 			notifyAll();
@@ -45,7 +68,13 @@ public class Results {
 
 		}
 		if (isCompleted) {
-			DataSender.writeToFile(this.list);
+			
+			int sizeOfVector = list.size();
+			for (int i = 0; i < sizeOfVector; i++) {
+				pw.println(list.elementAt(i));
+			}
+			pw.flush();
+			
 			this.list.removeAllElements();
 		}
 	}

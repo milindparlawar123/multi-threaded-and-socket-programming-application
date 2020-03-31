@@ -1,21 +1,23 @@
 package multiThreaded.DataSender;
 
 import java.net.Socket;
-import java.util.Vector;
-
-import multiThreaded.persist.PersisterService;
 import multiThreaded.util.Results;
 
 public class DataSender implements Runnable {
 
 	private Results results;
-	private Socket socket;
+	public Socket socket;
+	
+	public Socket getSocket() {
+		return socket;
+	}
 
-	public DataSender() {
+	public void setSocket(Socket socket) {
+		this.socket = socket;
 	}
 
 	public DataSender(Socket clientSocket) {
-		this.socket = clientSocket;
+		socket = clientSocket;
 	}
 
 	public DataSender(Results results) {
@@ -25,23 +27,11 @@ public class DataSender implements Runnable {
 	@Override
 	public void run() {
 		try {
-			// while(true)
 			this.results.write();
-			// writeToFile();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 
-		}
-		
+		}	
 	}
-
-	public static void writeToFile(Vector<Integer> list) {
-		System.out.println("in data sender " + list);
-
-		// Sending the data to the server aka PersisterService
-		PersisterService.echoNumbers(list);
-
-	}
-
 }

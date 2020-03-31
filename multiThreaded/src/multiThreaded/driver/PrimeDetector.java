@@ -1,6 +1,8 @@
 package multiThreaded.driver;
 
 import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.nio.file.InvalidPathException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,28 +25,33 @@ public class PrimeDetector {
 		} finally {
 
 		}
-
-		ExecutorService executorService = Executors.newFixedThreadPool(4);
-		Results results = new Results(5);
+		Socket socket;
+		Results results = null;
 		FileProcessor filePr = null;
+		ExecutorService executorService = Executors.newFixedThreadPool(4);
 		try {
+			socket = new Socket(args[3], Integer.parseInt(args[4]));
+			
+			results = new Results(5,socket);
+			
 			filePr = new FileProcessor("input.txt");
-		} catch (InvalidPathException | SecurityException | IOException e1) {
-			// TODO Auto-generated catch block
+		} catch (NumberFormatException e2) {
+			e2.printStackTrace();
+		} catch (UnknownHostException e2) {
+			e2.printStackTrace();
+		} catch (IOException e2) {
+			e2.printStackTrace();
+		} catch (InvalidPathException | SecurityException e1) {
 			e1.printStackTrace();
-		} finally {
-
 		}
 
 		for (int i = 0; i < 1; i++) {
 			Runnable r = new WorkerThread("thread " + i, results, filePr);
 			executorService.execute(r);
-
 		}
 		for (int i = 0; i < 1; i++) {
 			Runnable r = new DataSender(results);
 			executorService.execute(r);
-
 		}
 
 		executorService.shutdown();
@@ -54,11 +61,10 @@ public class PrimeDetector {
 		try {
 			filePr.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
-		 finally {
+		finally {
 
-			}
+		}
 	}
 }

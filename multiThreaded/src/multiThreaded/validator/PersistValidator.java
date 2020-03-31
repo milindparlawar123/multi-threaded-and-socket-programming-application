@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import multiThreaded.constants.Constants;
 
-public class PersistValidaor {
+public class PersistValidator {
 	private int argsLength;
 	private String args[];
 
@@ -15,7 +15,7 @@ public class PersistValidaor {
 		 * @return run method will check whether there are 3 arguments present or not.
 		 *         if not it will throw error else will return to calling method
 		 */
-		public static Validator argsLengthValidator(PersistValidaor d) {
+		public static Validator argsLengthValidator(PersistValidator d) {
 			return new Validator() {
 				@Override
 				public void run() throws Exception {
@@ -31,7 +31,7 @@ public class PersistValidaor {
 		 * @return run method will check whether all inputs file provided or not and it
 		 *         will also check that 2 files path and names are not same
 		 */
-		public static Validator argsValidator(PersistValidaor d) {
+		public static Validator argsValidator(PersistValidator d) {
 			return new Validator() {
 				@Override
 				public void run() throws Exception {
@@ -62,7 +62,7 @@ public class PersistValidaor {
 		}
 	}
 
-	public PersistValidaor(int argsLength, String[] args) throws Exception {
+	public PersistValidator(int argsLength, String[] args) throws Exception {
 		this.argsLength = argsLength;
 		this.args = args;
 
