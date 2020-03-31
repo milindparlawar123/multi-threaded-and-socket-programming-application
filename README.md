@@ -1,4 +1,4 @@
-# CSX42: Assignment 1
+# CSX42: Assignment 3
 ## Name: Smriti Janaswamy and Milind Keshav Parlawar
 
 #### Repository Link - https://github.com/csx42/csx42-spring-2020-assign3-smriti/
@@ -51,20 +51,18 @@ Description: Compiles your code and generates .class files inside the BUILD fold
 
 ** Note **
 * The input file name is input.txt
-* The current input.txt file has some content that I have used when writing code.
-* Please feel free to replace the text in this to test with.
+* The current input.txt file has some content that I have used when writing code.  
+	* Please feel free to replace the text in this to test with.
 * The output file name is output.txt and is in the same location as the input file.
 * numThreads can be a number between 1 AND 5
 * capacity is a number that must not be <= 0
-* persisterServiceIp is the IP address on which the server is running. This information is printed to the console - pick it up from there.
+* persisterServiceIp is the IP address on which the server is running. This information can be printed to the console - pick it up from there.  
+	* In order to do so, type ping remote05.cs.binghamton.edu  
+	* Replace 5 with the machine number you have remote'd into.  
+	* This will give you a value like 128.226.114.205  
+	* Once you have this value, stop it using Ctrl+C.  
 * DpersisterServicePort is the port number on which the Server is running. Since we have entered it above, pick it up from there. It is also printed to the console.
 * debugValue is a number between 0 AND 4 and each of the 5 values represents the following :
-
-DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]  
-DEBUG_VALUE=3 [Print to stdout everytime a thread's run() method is called]  
-DEBUG_VALUE=2 [Print to stdout everytime an entry is added to the Results data structure]  
-DEBUG_VALUE=1 [Print to stdout the contents of the data structure in the store Results instance]  
-DEBUG_VALUE=0 [No output should be printed from the application, except the line "The sume of all the prime numbers is: XYZ" ]  
 
 Additional Info -  Use 2 terminal windows to run. One window will run the persisterService and the other will run Prime Detector. 
 
